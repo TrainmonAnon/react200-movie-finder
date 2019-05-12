@@ -29,6 +29,7 @@ describe('express', () => {
         .end()
         .then((text) => {
             expect(text).to.equal('Movie Finder');
+            done();
         })
     ).timeout(6500);
 
@@ -38,8 +39,8 @@ describe('express', () => {
         .evaluate(() => document.querySelector('#searchButton').innerText)
         .end()
         .then((text) => {
-            console.log(text);
             expect(text).to.equal('Go!');
+            done();
         })
     ).timeout(6500);
 
@@ -49,8 +50,8 @@ describe('express', () => {
         .evaluate(() => document.querySelector('#searchInput').innerText)
         .end()
         .then((text) => {
-            console.log(text);
             expect(text).to.exist;
+            done();
         })
     ).timeout(6500);
 
@@ -64,6 +65,7 @@ describe('express', () => {
         .end()
         .then((text) => {
             expect(text).to.contain('time');
+            done();
         })
     ).timeout(10000);
 
@@ -77,6 +79,7 @@ describe('express', () => {
         .end()
         .then((text) => {
             expect(text).to.exist;
+            done();
         })
     ).timeout(10000);
 
@@ -92,6 +95,7 @@ describe('express', () => {
         .end()
         .then(url => {
             expect(url).to.contain('/movie/');
+            done();
         })
     ).timeout(10000);
 });
