@@ -8,10 +8,9 @@ let nightmare;
 
 const app = require('../server/server');
 
-app.listen(8888);
+app.listen(process.env.PORT || 8888);
 
-const url = 'http://localhost:8888';
-const urlMovie = 'http://localhost:8888/movie/';
+const url = `http://localhost:${process.env.PORT || 8888}`;
 
 describe('express', () => {
 
@@ -31,7 +30,7 @@ describe('express', () => {
             expect(text).to.equal('Movie Finder');
             done();
         })
-    ).timeout(6500);
+    ).timeout(20000);
 
     it('should have a search button', () =>
         nightmare
@@ -42,7 +41,7 @@ describe('express', () => {
             expect(text).to.equal('Go!');
             done();
         })
-    ).timeout(6500);
+    ).timeout(20000);
 
     it('should have a search input', () =>
         nightmare
@@ -53,7 +52,7 @@ describe('express', () => {
             expect(text).to.exist;
             done();
         })
-    ).timeout(6500);
+    ).timeout(20000);
 
     it('should display search results', () =>
         nightmare
@@ -67,7 +66,7 @@ describe('express', () => {
             expect(text).to.contain('time');
             done();
         })
-    ).timeout(10000);
+    ).timeout(20000);
 
     it('should display search result images', () =>
         nightmare
@@ -81,7 +80,7 @@ describe('express', () => {
             expect(text).to.exist;
             done();
         })
-    ).timeout(10000);
+    ).timeout(20000);
 
     it('should redirect to movie detail page on selecting a movie button', () =>
         nightmare
@@ -97,5 +96,5 @@ describe('express', () => {
             expect(url).to.contain('/movie/');
             done();
         })
-    ).timeout(10000);
+    ).timeout(20000);
 });
