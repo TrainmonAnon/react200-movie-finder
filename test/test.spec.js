@@ -28,9 +28,8 @@ describe('express', () => {
         .end()
         .then((text) => {
             expect(text).to.equal('Movie Finder');
-            done();
         })
-    ).timeout(20000);
+    ).timeout(6000);
 
     it('should have a search button', () =>
         nightmare
@@ -39,9 +38,8 @@ describe('express', () => {
         .end()
         .then((text) => {
             expect(text).to.equal('Go!');
-            done();
         })
-    ).timeout(20000);
+    ).timeout(6000);
 
     it('should have a search input', () =>
         nightmare
@@ -50,9 +48,8 @@ describe('express', () => {
         .end()
         .then((text) => {
             expect(text).to.exist;
-            done();
         })
-    ).timeout(20000);
+    ).timeout(6000);
 
     it('should display search results', () =>
         nightmare
@@ -64,9 +61,8 @@ describe('express', () => {
         .end()
         .then((text) => {
             expect(text).to.contain('time');
-            done();
         })
-    ).timeout(20000);
+    ).timeout(6000);
 
     it('should display search result images', () =>
         nightmare
@@ -78,9 +74,8 @@ describe('express', () => {
         .end()
         .then((text) => {
             expect(text).to.exist;
-            done();
         })
-    ).timeout(20000);
+    ).timeout(8000);
 
     it('should redirect to movie detail page on selecting a movie button', () =>
         nightmare
@@ -94,7 +89,6 @@ describe('express', () => {
         .end()
         .then(url => {
             expect(url).to.contain('/movie/');
-            done();
         })
-    ).timeout(20000);
+    ).timeout(8000);
 });
