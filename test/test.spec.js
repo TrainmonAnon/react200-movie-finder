@@ -18,7 +18,7 @@ const url = `http://localhost:${process.env.PORT || 8888}`;
 describe('express', () => {
 
     beforeEach(() => {
-        nightmare = new Nightmare().goto(url).wait();
+        nightmare = new Nightmare();
     });
 
     it('returns the proper status code', () => axios.get(url)
@@ -26,6 +26,8 @@ describe('express', () => {
 
     it('should have the correct page title', () =>
         nightmare
+        .goto(url)
+        .wait()
         .evaluate(() => document.getElementById('title').innerText)
         .end()
         .then((text) => {
@@ -35,6 +37,8 @@ describe('express', () => {
 
     it('should have a search button', () =>
         nightmare
+        .goto(url)
+        .wait()
         .evaluate(() => document.querySelector('#searchButton').innerText)
         .end()
         .then((text) => {
@@ -44,6 +48,8 @@ describe('express', () => {
 
     it('should have a search input', () =>
         nightmare
+        .goto(url)
+        .wait()
         .evaluate(() => document.querySelector('#searchInput').innerText)
         .end()
         .then((text) => {
@@ -53,6 +59,8 @@ describe('express', () => {
 
     it('should display search results', () =>
         nightmare
+        .goto(url)
+        .wait()
         .type('#searchInput', 'Land before')
         .click('#searchButton')
         .wait(2000)
@@ -65,6 +73,8 @@ describe('express', () => {
 
     it('should display search result images', () =>
         nightmare
+        .goto(url)
+        .wait()
         .type('#searchInput', 'Land before')
         .click('#searchButton')
         .wait(2000)
@@ -77,6 +87,8 @@ describe('express', () => {
 
     it('should redirect to movie detail page on selecting a movie button', () =>
         nightmare
+        .goto(url)
+        .wait()
         .type('#searchInput', 'Land before')
         .click('#searchButton')
         .wait(2000)
