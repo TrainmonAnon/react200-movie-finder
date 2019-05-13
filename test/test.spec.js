@@ -1,12 +1,15 @@
 const express = require('express');
 const path = require('path');
 const Nightmare = require('nightmare');
-const expect = require('chai').expect;
+const chai = require('chai')
+const expect = chai.expect;
+const chaiHttp = require('chai-http');
 const axios = require('axios');
 
 var nightmare;
 
 const app = require('../server/server');
+chai.use(chaiHttp)
 
 app.listen(process.env.PORT || 8888);
 
@@ -28,6 +31,7 @@ describe('express', () => {
         .then((text) => {
             expect(text).to.equal('Movie Finder');
         })
+        .catch(err => console.log(err))
     ).timeout(20000);
 
     it('should have a search button', () =>
@@ -37,6 +41,7 @@ describe('express', () => {
         .then((text) => {
             expect(text).to.equal('Go!');
         })
+        .catch(err => console.log(err))
     ).timeout(20000);
 
     it('should have a search input', () =>
@@ -46,6 +51,7 @@ describe('express', () => {
         .then((text) => {
             expect(text).to.exist;
         })
+        .catch(err => console.log(err))
     ).timeout(20000);
 
     it('should display search results', () =>
@@ -58,6 +64,7 @@ describe('express', () => {
         .then((text) => {
             expect(text).to.contain('time');
         })
+        .catch(err => console.log(err))
     ).timeout(20000);
 
     it('should display search result images', () =>
@@ -70,6 +77,7 @@ describe('express', () => {
         .then((text) => {
             expect(text).to.exist;
         })
+        .catch(err => console.log(err))
     ).timeout(20000);
 
     it('should redirect to movie detail page on selecting a movie button', () =>
@@ -84,5 +92,6 @@ describe('express', () => {
         .then(url => {
             expect(url).to.contain('/movie/');
         })
+        .catch(err => console.log(err))
     ).timeout(20000);
 });
