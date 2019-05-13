@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:8.11
+      - image: circleci/node:latest-browsers
 
     working_directory: ~/repo
 
@@ -29,7 +29,7 @@ jobs:
       
   deploy:
     docker:
-      - image: circleci/node:8.11
+      - image: circleci/node:latest-browsers
     steps:
       - checkout
       - run:
