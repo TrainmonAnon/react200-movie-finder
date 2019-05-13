@@ -27,7 +27,7 @@ describe('express', () => {
     it('should have the correct page title', () =>
         nightmare
         .goto(url)
-        .wait(4000)
+        .wait('#title')
         .evaluate(() => document.getElementById('title').innerText)
         .end()
         .then((text) => {
@@ -38,8 +38,8 @@ describe('express', () => {
     it('should have a search button', () =>
         nightmare
         .goto(url)
-        .wait(4000)
-        .evaluate(() => document.querySelector('#searchButton').innerText)
+        .wait('#searchButton')
+        .evaluate(() => document.getElementById('searchButton').innerText)
         .end()
         .then((text) => {
             expect(text).to.equal('Go!');
@@ -49,8 +49,8 @@ describe('express', () => {
     it('should have a search input', () =>
         nightmare
         .goto(url)
-        .wait(4000)
-        .evaluate(() => document.querySelector('#searchInput').innerText)
+        .wait('#searchInput')
+        .evaluate(() => document.getElementById('searchInput').innerText)
         .end()
         .then((text) => {
             expect(text).to.exist;
@@ -60,7 +60,7 @@ describe('express', () => {
     it('should display search results', () =>
         nightmare
         .goto(url)
-        .wait(4000)
+        .wait('#searchInput')
         .type('#searchInput', 'Land before')
         .click('#searchButton')
         .wait(2000)
@@ -74,7 +74,7 @@ describe('express', () => {
     it('should display search result images', () =>
         nightmare
         .goto(url)
-        .wait(4000)
+        .wait('#searchInput')
         .type('#searchInput', 'Land before')
         .click('#searchButton')
         .wait(2000)
@@ -88,7 +88,7 @@ describe('express', () => {
     it('should redirect to movie detail page on selecting a movie button', () =>
         nightmare
         .goto(url)
-        .wait(4000)
+        .wait('#searchInput')
         .type('#searchInput', 'Land before')
         .click('#searchButton')
         .wait(2000)
