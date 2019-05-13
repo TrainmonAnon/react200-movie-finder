@@ -18,7 +18,7 @@ const url = `http://localhost:${process.env.PORT || 8888}`;
 describe('express', () => {
 
     beforeEach(() => {
-        nightmare = new Nightmare().goto(url);
+        nightmare = new Nightmare().goto(url).wait();
     });
 
     it('returns the proper status code', () => axios.get(url)
@@ -31,7 +31,6 @@ describe('express', () => {
         .then((text) => {
             expect(text).to.equal('Movie Finder');
         })
-        .catch(err => console.log(err))
     ).timeout(20000);
 
     it('should have a search button', () =>
@@ -41,7 +40,6 @@ describe('express', () => {
         .then((text) => {
             expect(text).to.equal('Go!');
         })
-        .catch(err => console.log(err))
     ).timeout(20000);
 
     it('should have a search input', () =>
@@ -51,7 +49,6 @@ describe('express', () => {
         .then((text) => {
             expect(text).to.exist;
         })
-        .catch(err => console.log(err))
     ).timeout(20000);
 
     it('should display search results', () =>
@@ -64,7 +61,6 @@ describe('express', () => {
         .then((text) => {
             expect(text).to.contain('time');
         })
-        .catch(err => console.log(err))
     ).timeout(20000);
 
     it('should display search result images', () =>
@@ -77,7 +73,6 @@ describe('express', () => {
         .then((text) => {
             expect(text).to.exist;
         })
-        .catch(err => console.log(err))
     ).timeout(20000);
 
     it('should redirect to movie detail page on selecting a movie button', () =>
@@ -92,6 +87,5 @@ describe('express', () => {
         .then(url => {
             expect(url).to.contain('/movie/');
         })
-        .catch(err => console.log(err))
     ).timeout(20000);
 });
