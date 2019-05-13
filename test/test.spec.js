@@ -4,7 +4,7 @@ const Nightmare = require('nightmare');
 const expect = require('chai').expect;
 const axios = require('axios');
 
-let nightmare;
+var nightmare;
 
 const app = require('../server/server');
 
