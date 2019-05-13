@@ -15,7 +15,7 @@ const url = `http://localhost:${process.env.PORT || 8888}`;
 describe('express', () => {
 
     beforeEach(() => {
-        nightmare = new Nightmare();
+        nightmare = new Nightmare().goto(url);
     });
 
     it('returns the proper status code', () => axios.get(url)
@@ -23,37 +23,33 @@ describe('express', () => {
 
     it('should have the correct page title', () =>
         nightmare
-        .goto(url)
         .evaluate(() => document.getElementById('title').innerText)
         .end()
         .then((text) => {
             expect(text).to.equal('Movie Finder');
         })
-    ).timeout(6000);
+    ).timeout(20000);
 
     it('should have a search button', () =>
         nightmare
-        .goto(url)
         .evaluate(() => document.querySelector('#searchButton').innerText)
         .end()
         .then((text) => {
             expect(text).to.equal('Go!');
         })
-    ).timeout(6000);
+    ).timeout(20000);
 
     it('should have a search input', () =>
         nightmare
-        .goto(url)
         .evaluate(() => document.querySelector('#searchInput').innerText)
         .end()
         .then((text) => {
             expect(text).to.exist;
         })
-    ).timeout(6000);
+    ).timeout(20000);
 
     it('should display search results', () =>
         nightmare
-        .goto(url)
         .type('#searchInput', 'Land before')
         .click('#searchButton')
         .wait(2000)
@@ -62,11 +58,10 @@ describe('express', () => {
         .then((text) => {
             expect(text).to.contain('time');
         })
-    ).timeout(6000);
+    ).timeout(20000);
 
     it('should display search result images', () =>
         nightmare
-        .goto(url)
         .type('#searchInput', 'Land before')
         .click('#searchButton')
         .wait(2000)
@@ -75,11 +70,10 @@ describe('express', () => {
         .then((text) => {
             expect(text).to.exist;
         })
-    ).timeout(8000);
+    ).timeout(20000);
 
     it('should redirect to movie detail page on selecting a movie button', () =>
         nightmare
-        .goto(url)
         .type('#searchInput', 'Land before')
         .click('#searchButton')
         .wait(2000)
@@ -90,5 +84,5 @@ describe('express', () => {
         .then(url => {
             expect(url).to.contain('/movie/');
         })
-    ).timeout(8000);
+    ).timeout(20000);
 });
