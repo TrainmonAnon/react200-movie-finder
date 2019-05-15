@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import { expect } from 'chai';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import App from './src/js/App';
+import App from './src/js/app';
 import store from './src/js/rootStore';
 
 Enzyme.configure({ adapter: new Adapter() });
