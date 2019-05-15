@@ -11,7 +11,10 @@
     "test": "jest"
   },
   "jest": {
-    "verbose": true
+    "verbose": true,
+    "modulePaths": [
+      "<rootDir>"
+    ]
   },
   "dependencies": {
     "@babel/core": "^7.4.4",
