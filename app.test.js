@@ -4,8 +4,6 @@ import { expect } from 'chai';
 import Enzyme, { mount, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import App from './src/js/App';
-import MovieSearchContainer from './src/js/containers/MovieSearchContainer';
-import MovieDetailContainer from './src/js/containers/MovieDetailContainer';
 import store from './src/js/rootStore';
 
 Enzyme.configure({ adapter: new Adapter() });

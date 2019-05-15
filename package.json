@@ -13,7 +13,7 @@
   "jest": {
     "verbose": true,
     "modulePaths": [
-      "<rootDir>"
+      "src"
     ]
   },
   "dependencies": {
