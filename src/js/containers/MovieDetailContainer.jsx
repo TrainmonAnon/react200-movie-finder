@@ -27,7 +27,7 @@ class MovieDetailContainer extends Component {
             <div className='row justify-content-center'>
                 <button onClick={() => this.onClick()}>Go back</button>
 
-                <img className='col-3' src={this.props.movie.Poster} />
+                <img id='poster' className='col-3' src={this.props.movie.Poster} />
                 
                 <div className='col-6 card'>
                     <div className='card-header'>Movie Details</div>
